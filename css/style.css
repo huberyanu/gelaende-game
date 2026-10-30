@@ -1,0 +1,330 @@
+/* ===== Gelände Game – Stylesheet ===== */
+:root {
+  --bg: #111111;
+  --bg-alt: #1b1b1b;
+  --text: #f5f5f5;
+  --muted: #cfcfcf;
+  --green: #4caf50;
+  --green-dark: #3d8b40;
+  --card: #1e1e1e;
+  --border: #2e2e2e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--green-dark);
+}
+
+/* ===== Header ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  height: 52px;
+  width: auto;
+}
+
+.logo-text {
+  line-height: 1.1;
+}
+
+.logo-text .logo-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.logo-text .logo-sub {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ===== Navigation ===== */
+.nav-toggle {
+  background: none;
+  border: 2px solid var(--text);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.main-nav {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  display: none;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.main-nav.open {
+  display: flex;
+}
+
+.main-nav a {
+  color: var(--text);
+  padding: 12px 24px;
+  font-size: 1.05rem;
+  border-left: 3px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  background: rgba(76, 175, 80, 0.12);
+  border-left-color: var(--green);
+  color: var(--text);
+}
+
+@media (min-width: 900px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .main-nav {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .main-nav a {
+    padding: 8px 14px;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    font-size: 0.98rem;
+  }
+
+  .main-nav a:hover,
+  .main-nav a.active {
+    background: none;
+    border-bottom-color: var(--green);
+  }
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero img.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(17, 17, 17, 0.35), rgba(17, 17, 17, 0.75));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.8);
+}
+
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--muted);
+  margin-top: 12px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* ===== Wave divider ===== */
+.wave {
+  display: block;
+  width: 100%;
+  height: 80px;
+  margin-top: -1px;
+}
+
+/* ===== Content ===== */
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 24px 72px;
+}
+
+.content h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.content h2 {
+  font-size: clamp(1.4rem, 3.5vw, 1.9rem);
+  color: var(--green);
+  margin: 36px 0 12px;
+}
+
+.content p {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 1.06rem;
+}
+
+.content ul {
+  margin: 0 0 14px 22px;
+  color: var(--muted);
+  font-size: 1.06rem;
+}
+
+.content strong {
+  color: var(--text);
+}
+
+/* ===== Cards (Rohstoffe) ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card h3 {
+  padding: 16px 12px 4px;
+  font-size: 1.25rem;
+}
+
+.card p {
+  padding: 0 12px 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ===== Big link button (Karte / Chat) ===== */
+.big-button {
+  display: inline-block;
+  margin-top: 20px;
+  background: var(--green);
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 16px 48px;
+  border-radius: 10px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.big-button:hover {
+  background: var(--green-dark);
+  color: #fff;
+  transform: scale(1.04);
+}
+
+/* ===== Footer ===== */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
